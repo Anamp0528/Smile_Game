@@ -30,19 +30,28 @@
       //percorremos todas as divs armazenadas
       for (i = 0; i < divis.length; i++) {
         //verificamos se sao as divs com ids 0 ou 1 ou 2
-        if (divis[i].id == 0 || divis[i].id == 1 || divis[i].id == 2) {
+        if (divis[i].id == 1 || divis[i].id == 2 || divis[i].id == 3 || divis[i].id == 4 || divis[i].id == 5){
           //alteramos a classe css das divs 0, 1 e 2 (className)
           divis[i].className = "inicial";
+          divis[i].innerHTML = divis[i].id;
         }
+        
       }
 
       //armazenamos a imagem do Smile na variável imagem (getElementById)
       let imagem = document.getElementById("imagem");
       //se a imagem nao for vazia (se ela existir)
       if (imagem != "") {
-        //removemos a imagem do Smile
+        //removemos a imagem do Smile,
         imagem.remove();
       }
+      let imagemErro = document.getElementById("imagemErro");
+      //se a imagem nao for vazia (se ela existir)
+      if (imagemErro != "") {
+        //removemos a imagem do Smile
+        imagemErro.remove();
+      }
+      
     }
 
     //funçao que atualiza o placar
@@ -53,6 +62,8 @@
       document.getElementById("resposta").innerHTML = "Placar - Acertos: " + acertos + " Tentativas: " + tentativas + " Desempenho: " + Math.round(desempenho) + "%";
 
     }
+   
+    
 
     //funçao executada quando o jogador acertou
     function acertou(obj) {
@@ -62,45 +73,42 @@
       const img = new Image(100);
       img.id = "imagem";
       //altera o atributo src (source) da imagem criada
-      img.src = "https://upload.wikimedia.org/wikipedia/commons/2/2e/Oxygen480-emotes-face-smile-big.svg";
+      img.src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBBizV7-xFBv7Fq1oll4F1QVqGqO_0mcy8rA&s";
       //adiciona a imagem criada na div (obj) escolhida pelo jogador (appendChild)
       obj.appendChild(img);
     }
+    function errou(obj) {
+      obj.innerHTML="";
+      obj.className = "errou";
+      const img = new Image(100);
+      img.id = "imagemErro";
+      img.src = "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Red_X.svg/1024px-Red_X.svg.png"; // Imagem de erro
+      obj.appendChild(img);
+    }
 
+    
     //Função que sorteia um número aleatório entre 0 e 2 e verifica se o jogador acertou
     function verifica(obj) {
-      //se jogar é verdadeiro
       if (jogar) {
-        //jogar passa a ser false
         jogar = false;
-        //incrementa as tentativas
         tentativas++;
-        //verifica se jogou 3 vezes
-        if (tentativas == 3) {
-          //oculta o botao joganovamente alterando a classe css (getElementById e className)
-          btnJogarNovamente.className = 'invisivel';
-          //mostra o botao reiniciar alterando a classe css (getElementById e className)
-          btnReiniciar.className = 'visivel';
-        }
-        //a variável sorteado recebe um valor inteiro (Math.floor) aleatório (Math.random)
-        let sorteado = Math.floor(Math.random() * 3);
-        //se o id da <div> escolhida pelo jogador for igual ao número sorteado
+        
+        let sorteado = Math.floor(Math.random() * 6);
         if (obj.id == sorteado) {
-          //chama a funçao acertou passando a div escolhida pelo jogador
           acertou(obj);
-          //incrementa o contador de acertos
           acertos++;
-        } else {//se errou a tentativa
-          //altera a classe da <div> escolhida pelo jogador para a classe errou
-          obj.className = "errou";
-          //armazena a div aonde Smile está escondido (getElementById)
+        } else {
+          errou(obj);
           const objSorteado = document.getElementById(sorteado);
-          //chama a funçao acertou para mostrar a div aonde está o Smile
           acertou(objSorteado);
         }
-        //chama a funçao que atualiza o placar
         atualizaPlacar(acertos, tentativas);
-      } else {//se o jogador clicar em outra carta sem reiniciar o jogo, recebe um alerta
+if (tentativas == 5) {
+  btnJogarNovamente.className = 'invisvel';
+  btnReiniciar.className = 'visivel';
+}
+
+      } else {
         alert('Clique em "Jogar novamente"');
       }
     }

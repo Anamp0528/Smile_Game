@@ -1,37 +1,92 @@
-.invisivel{
-    display:none;
+.invisivel {
+  display: none;
+}
+
+.visivel {
+  display: inline;
+}
+
+.inicial {
+  text-align: center;
+  font-size: 100px;
+  background-color: #ffe4f0; /* rosa bebê de fundo */
+  width: 150px;
+  height: 200px;
+  border: 15px solid #ffb6c1; /* rosa claro na borda */
+  padding: 10px;
+  margin: 20px;
+}
+
+.acertou {
+  text-align: center;
+  color: #006400; /* verde escuro para contraste */
+  background-color: #c1f7c1; /* verde bebê de fundo */
+  width: 150px;
+  height: 200px;
+  border: 15px solid #32cd32; /* verde limão para borda */
+  padding: 10px;
+  margin: 20px;
+  animation: pulse 0.6s ease-in-out;
+}
+
+.errou {
+  text-align: center;
+  font-size: 10px;
+  color: white;
+  background-color: #ffb6c1; /* rosa claro */
+  width: 150px;
+  height: 200px;
+  border: 15px solid #ff69b4; /* rosa mais forte */
+  padding: 10px;
+  margin: 20px;
+  animation: shake 0.5s ease-in-out;
+}
+h1{
+  color: #ffb6c1;
+  font-family: fantasy;
+}
+
+button {
+  background-color: #ffb6c1; /* Cor de fundo rosa claro */
+  color: #fff; /* Cor do texto (branco) */
+  font-size: 14px; /* Tamanho de fonte menor */
+  padding: 8px 16px; /* Padding ajustado para um botão menor */
+  border: none; /* Sem borda padrão */
+  border-radius: 12px; /* Bordas arredondadas */
+  cursor: pointer; /* Cursor de mão ao passar o mouse */
+  display: block; /* Transforma em bloco para centralizar */
+  margin: 10px auto; /* Centraliza o botão horizontalmente */
+  text-align: center; /* Alinha o texto ao centro */
+  width: auto; /* Largura ajustável ao conteúdo */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombras suaves */
+  transition: background-color 0.3s, transform 0.3s ease; /* Transições suaves */
+}
+
+button:hover {
+  background-color: #ff69b4; /* Cor de fundo mais intensa ao passar o mouse */
+  transform: scale(1.05); /* Efeito de aumento suave ao passar o mouse */
+}
+
+button:focus {
+  outline: none; /* Remove o contorno padrão ao clicar */
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
   }
-  .visivel{
-    display:inline;
+  50% {
+    transform: scale(1.1);
   }
-  .inicial {
-    text-align: center;
-    font-size: 100px;
-    background-color: lightgrey;
-    width: 150px;
-    height: 200px;
-    border: 15px solid green;
-    padding: 10px;
-    margin: 20px;
+  100% {
+    transform: scale(1);
   }
-  .acertou {
-    text-align: center;
-    color: yellow;
-    background-color: LawnGreen;
-    width: 150px;
-    height: 200px;
-    border: 15px solid yellow;
-    padding: 10px;
-    margin: 20px;
-  }
-  .errou {
-    text-align: center;
-    font-size: 100px;
-    color: white;
-    background-color: red;
-    width: 150px;
-    height: 200px;
-    border: 15px solid black;
-    padding: 10px;
-    margin: 20px;
-  }
+}
+@keyframes shake {
+  0% { transform: translateX(0); }
+  20% { transform: translateX(-10px); }
+  40% { transform: translateX(10px); }
+  60% { transform: translateX(-10px); }
+  80% { transform: translateX(10px); }
+  100% { transform: translateX(0); }
+}
