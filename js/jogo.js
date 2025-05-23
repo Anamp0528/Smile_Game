@@ -6,7 +6,7 @@
 
     //captura os botoes pelos ids e adiciona um evento de clique
     const btnReiniciar = document.getElementById('reiniciar');
-    const btnJogarNovamente = document.getElementById('joganovamente');
+    const btnJogarNovamente = document.getElementById('jogarnovamente');
 
     //funçao que zera os valores das variáveis controladoras
     function reiniciar() {
